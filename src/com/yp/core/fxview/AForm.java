@@ -86,7 +86,7 @@ public abstract class AForm implements Initializable {
 		formatCurrency = NumberFormat.getCurrencyInstance();
 	}
 
-	public AForm() {
+	protected AForm() {
 		this.mode = new SimpleStringProperty();
 		this.hideClose = new SimpleBooleanProperty();
 		this.hideRefresh = new SimpleBooleanProperty();
