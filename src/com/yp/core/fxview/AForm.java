@@ -60,6 +60,7 @@ public abstract class AForm implements Initializable {
 	protected Pane self;
 
 	protected static ALauncher app;
+	@SuppressWarnings("rawtypes")
 	protected IResult result;
 	protected IDataEntity dataEntity;
 	protected List<IDataEntity> list;
