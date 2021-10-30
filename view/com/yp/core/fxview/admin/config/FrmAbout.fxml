@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.*?>
+<?import com.yp.ortak.bilesen.*?>
+
+<GridPane fx:controller="com.yp.core.fxview.admin.config.About" xmlns:fx="http://javafx.com/fxml/1">
+	<Label fx:id="etkYazar" GridPane.columnIndex="0" GridPane.rowIndex="0"/>	
+	<Label fx:id="txtYazar" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+	<Label fx:id="etkTarih" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+	<Label fx:id="txtTarih" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+	<ResimKutusu fx:id="rsmHakkinda" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+</GridPane>
+

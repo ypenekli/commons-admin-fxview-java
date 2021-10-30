@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.control.PasswordField?>
+
+<GridPane xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="com.yp.core.fxview.login.AddAccount" hgap="5" vgap="5" fx:id="self"   prefWidth="700">
+	<TabPane GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="3" fx:id="page" GridPane.hgrow="ALWAYS" prefWidth="700">
+		<Tab text="%AddAccount.EMail" fx:id="page1" closable="false" >
+		<GridPane  GridPane.columnIndex="0" GridPane.rowIndex="1" GridPane.columnSpan="2"  hgap="5" vgap="5" >
+			<Label 		GridPane.columnIndex="0" GridPane.rowIndex="0"  GridPane.columnSpan="4"  text="%AddAccount.EmailDecscription" >
+				<font><Font name="System Bold" size="18.0" /></font>
+			</Label>
+	      	<padding>
+				<Insets bottom="10" left="2" right="2" top="25" />
+			</padding>	
+			
+			<Label 		GridPane.columnIndex="0" GridPane.rowIndex="1" GridPane.halignment="right"  text="%AddAccount.EMail" style="-fx-font-weight: bold;"/>
+			<Label 		GridPane.columnIndex="1" GridPane.rowIndex="1" text="*" style="-fx-font-weight: bold;-fx-text-fill: red;"/>
+			<Label 		GridPane.columnIndex="2" GridPane.rowIndex="1" text="%Ikinokta" />
+			<TextField  GridPane.columnIndex="3" GridPane.rowIndex="1" fx:id="txtEMail" prefWidth="300" />				
+		</GridPane>
+		</Tab>
+		<Tab text="%AddAccount.Id" fx:id="page2" closable="false" disable="true">
+			<GridPane  GridPane.columnIndex="0" GridPane.rowIndex="1" GridPane.columnSpan="2"  hgap="5" vgap="5" >
+			<Label 		GridPane.columnIndex="0" GridPane.rowIndex="0"  GridPane.columnSpan="4"  text="%AddAccount.IdDecscription" >
+				<font><Font name="System Bold" size="18.0" /></font>
+			</Label>
+	      	<padding>
+				<Insets bottom="10" left="2" right="2" top="25" />
+			</padding>
+			
+			<Label 		GridPane.columnIndex="0" GridPane.rowIndex="1" GridPane.halignment="right"  id="etkBinanu" text="%AddAccount.Name"  style="-fx-font-weight: bold;"/>
+			<Label 		GridPane.columnIndex="1" GridPane.rowIndex="1" text="*" style="-fx-font-weight: bold;-fx-text-fill: red;"/>
+			<Label 		GridPane.columnIndex="2" GridPane.rowIndex="1" text="%Ikinokta" />
+			<TextField  GridPane.columnIndex="3" GridPane.rowIndex="1" fx:id="txtName" prefWidth="300" />
+			
+			
+			<Label 		GridPane.columnIndex="0" GridPane.rowIndex="2" GridPane.halignment="right"  id="etkBinanu" text="%AddAccount.Surname"  style="-fx-font-weight: bold;"/>
+			<Label 		GridPane.columnIndex="1" GridPane.rowIndex="2" text="*" style="-fx-font-weight: bold;-fx-text-fill: red;"/>
+			<Label 		GridPane.columnIndex="2" GridPane.rowIndex="2" text="%Ikinokta" />
+			<TextField  GridPane.columnIndex="3" GridPane.rowIndex="2" fx:id="txtSurname" prefWidth="300" />
+		
+			<Label 		GridPane.columnIndex="0" GridPane.rowIndex="3" GridPane.halignment="right" text="%AddAccount.Birthdate" style="-fx-font-weight: bold;"/>
+			<Label 		GridPane.columnIndex="1" GridPane.rowIndex="3" text="*" style="-fx-font-weight: bold;-fx-text-fill: red;"/>
+			<Label 		GridPane.columnIndex="2" GridPane.rowIndex="3" text="%Ikinokta" />
+			<DatePicker GridPane.columnIndex="3" GridPane.rowIndex="3" fx:id="txtBirthDate" prefWidth="200"  promptText="%AddAccount.Birthdate"/>
+			
+			<Label 		GridPane.columnIndex="0" GridPane.rowIndex="4" GridPane.halignment="right"  text="%AddAccount.Password1"  style="-fx-font-weight: bold;"/>
+			<Label 		GridPane.columnIndex="1" GridPane.rowIndex="4" text="*" style="-fx-font-weight: bold;-fx-text-fill: red;"/>
+			<Label 		GridPane.columnIndex="2" GridPane.rowIndex="4" text="%Ikinokta" />
+			<PasswordField  GridPane.columnIndex="3" GridPane.rowIndex="4" fx:id="txtPassword1" prefWidth="300" />
+			
+			<Label 		GridPane.columnIndex="0" GridPane.rowIndex="5" GridPane.halignment="right"  text="%AddAccount.Password2"  style="-fx-font-weight: bold;"/>
+			<Label 		GridPane.columnIndex="1" GridPane.rowIndex="5" text="*" style="-fx-font-weight: bold;-fx-text-fill: red;"/>
+			<Label 		GridPane.columnIndex="2" GridPane.rowIndex="5" text="%Ikinokta" />
+			<PasswordField   GridPane.columnIndex="3" GridPane.rowIndex="5" fx:id="txtPassword2" prefWidth="300" />
+				
+		</GridPane>
+		</Tab>
+		<Tab text="%AddAccount.Contact" fx:id="page3" closable="false" disable="true">
+			<GridPane  GridPane.columnIndex="0" GridPane.rowIndex="1" GridPane.columnSpan="2"  hgap="5" vgap="5" >
+			<Label 		GridPane.columnIndex="0" GridPane.rowIndex="0"  GridPane.columnSpan="4"  text="%AddAccount.ContactDecscription" >
+				<font><Font name="System Bold" size="18.0" /></font>
+			</Label>
+	      	<padding>
+				<Insets bottom="10" left="2" right="2" top="25" />
+			</padding>			
+			
+			<Label 		GridPane.columnIndex="0" GridPane.rowIndex="1" GridPane.halignment="right"  id="etkBinanu" text="%AddAccount.MobilePhoneNu"  style="-fx-font-weight: bold;"/>			
+			<Label 		GridPane.columnIndex="2" GridPane.rowIndex="1" text="%Ikinokta" />
+			<TextField  GridPane.columnIndex="3" GridPane.rowIndex="1" fx:id="txtMobilePhoneNu" prefWidth="200" />
+			
+			<Label 		GridPane.columnIndex="0" GridPane.rowIndex="2" GridPane.halignment="right" text="%AddAccount.HomeCity" style="-fx-font-weight: bold;"/>
+			<Label 		GridPane.columnIndex="1" GridPane.rowIndex="2" text="*" style="-fx-font-weight: bold;-fx-text-fill: red;"/>
+			<Label 		GridPane.columnIndex="2" GridPane.rowIndex="2" text="%Ikinokta" />
+			<ComboBox	GridPane.columnIndex="3" GridPane.rowIndex="2" fx:id="cbHomeCity" maxWidth="250" promptText="%Secil" ></ComboBox>	
+			
+			
+			<Label 		GridPane.columnIndex="0" GridPane.rowIndex="3" style="-fx-font-weight: bold;" text="%Adres"  GridPane.halignment="right" GridPane.valignment="top" />	
+			<Label 		GridPane.columnIndex="2" GridPane.rowIndex="3" text="%Ikinokta"  GridPane.valignment="top" />
+			<TextArea  	GridPane.columnIndex="3" GridPane.rowIndex="3" fx:id="txtAddress" prefHeight="70" prefWidth="250" />
+				
+		</GridPane>
+		</Tab>
+		<Tab text="%AddAccount.Ozet" fx:id="page4" closable="false" disable="true">
+			<GridPane GridPane.columnIndex="0" GridPane.rowIndex="1"
+				GridPane.columnSpan="2" hgap="5" vgap="5">
+			
+			<Label 		GridPane.columnIndex="0" GridPane.rowIndex="1" GridPane.halignment="right"  text="%AddAccount.EMail" style="-fx-font-weight: bold;"/>
+			<Label 		GridPane.columnIndex="1" GridPane.rowIndex="1" text="*" style="-fx-font-weight: bold;-fx-text-fill: red;"/>
+			<Label 		GridPane.columnIndex="2" GridPane.rowIndex="1" text="%Ikinokta" />
+			<Label  	GridPane.columnIndex="3" GridPane.rowIndex="1" text="${controller.account.email}"  />		
+			
+			<Label 		GridPane.columnIndex="0" GridPane.rowIndex="2" GridPane.halignment="right"   text="%AddAccount.Name"  style="-fx-font-weight: bold;"/>
+			<Label 		GridPane.columnIndex="1" GridPane.rowIndex="2" text="*" style="-fx-font-weight: bold;-fx-text-fill: red;"/>
+			<Label 		GridPane.columnIndex="2" GridPane.rowIndex="2" text="%Ikinokta" />
+			<Label  	GridPane.columnIndex="3" GridPane.rowIndex="2" text="${controller.account.name}" />
+			
+			<Label 		GridPane.columnIndex="0" GridPane.rowIndex="3" GridPane.halignment="right"   text="%AddAccount.Surname"  style="-fx-font-weight: bold;"/>
+			<Label 		GridPane.columnIndex="1" GridPane.rowIndex="3" text="*" style="-fx-font-weight: bold;-fx-text-fill: red;"/>
+			<Label 		GridPane.columnIndex="2" GridPane.rowIndex="3" text="%Ikinokta" />
+			<Label  	GridPane.columnIndex="3" GridPane.rowIndex="3" text="${controller.account.surname}" />
+		
+			<Label 		GridPane.columnIndex="0" GridPane.rowIndex="4" GridPane.halignment="right" text="%AddAccount.Birthdate" style="-fx-font-weight: bold;"/>
+			<Label 		GridPane.columnIndex="1" GridPane.rowIndex="4" text="*" style="-fx-font-weight: bold;-fx-text-fill: red;"/>
+			<Label 		GridPane.columnIndex="2" GridPane.rowIndex="4" text="%Ikinokta" />
+			<Label  	GridPane.columnIndex="3" GridPane.rowIndex="4" text="${controller.account.birthday}" />
+			
+			<Label 		GridPane.columnIndex="0" GridPane.rowIndex="5" GridPane.halignment="right"  text="%AddAccount.MobilePhoneNu"  style="-fx-font-weight: bold;"/>			
+			<Label 		GridPane.columnIndex="2" GridPane.rowIndex="5" text="%Ikinokta" />
+			<Label  	GridPane.columnIndex="3" GridPane.rowIndex="5" text="${controller.account.phone}" />
+			
+			<Label 		GridPane.columnIndex="0" GridPane.rowIndex="6" GridPane.halignment="right" text="%AddAccount.HomeCity" style="-fx-font-weight: bold;"/>
+			<Label 		GridPane.columnIndex="1" GridPane.rowIndex="6" text="*" style="-fx-font-weight: bold;-fx-text-fill: red;"/>
+			<Label 		GridPane.columnIndex="2" GridPane.rowIndex="6" text="%Ikinokta" />
+			<Label  	GridPane.columnIndex="3" GridPane.rowIndex="6" text="${controller.account.homeCity}" />
+			
+			<Label 		GridPane.columnIndex="0" GridPane.rowIndex="7" GridPane.halignment="right" GridPane.valignment="top" text="%Adres" style="-fx-font-weight: bold;"/>
+			<Label 		GridPane.columnIndex="2" GridPane.rowIndex="7" text="%Ikinokta" />
+			<Label  	GridPane.columnIndex="3" GridPane.rowIndex="7" text="${controller.account.address}" />
+
+			
+			<Button 	GridPane.columnIndex="0" GridPane.rowIndex="10" GridPane.columnSpan="2" GridPane.halignment="right"   defaultButton="true" onAction="#save" text="%Save"  />
+		
+			</GridPane>
+		</Tab>
+	</TabPane>
+	<Label 		GridPane.columnIndex="0" GridPane.rowIndex="4" GridPane.columnSpan="3" text="%Zorunlu" style="-fx-text-fill: red;" />	
+		
+	<Button 	GridPane.columnIndex="0" GridPane.rowIndex="6" GridPane.halignment="right"  fx:id="btnBackward"  onAction="#geri" text="%Geri"  />			
+	<Button 	GridPane.columnIndex="1" GridPane.rowIndex="6" GridPane.halignment="left" defaultButton="true" fx:id="btnForward" onAction="#ileri" text="%Ileri" />	
+	<Button 	GridPane.columnIndex="2" GridPane.rowIndex="6" GridPane.halignment="left" fx:id="bClose" onAction="#close" text="%Close" visible="false" />
+</GridPane>

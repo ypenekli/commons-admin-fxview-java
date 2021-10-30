@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.control.TreeView?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.TextField?>
+
+<GridPane fx:id="self" xmlns="http://javafx.com/javafx/8.0.60"
+	xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="com.yp.core.fxview.admin.GroupList">	
+	<HBox GridPane.rowIndex="1" xmlns:fx="http://javafx.com/fxml/1" prefWidth="700">
+		<ToolBar  HBox.hgrow="ALWAYS">
+			<Button onAction="#hide" text="%Close" disable="${controller.hideClose}" />
+			<Separator />
+			<Button onAction="#refresh" text="%Refresh" disable="${controller.hideRefresh}" />
+			<Separator />
+			<Button onAction="#add" text="%AddNew" disable="${controller.hideAdd}" />
+			<Separator />
+			<Button onAction="#save" text="${controller.labelSave}" disable="${controller.hideSave}" />
+			<Separator />
+			<Button onAction="#report" text="%Report" disable="${controller.hideReport}" />
+			<Separator />
+			<Pane HBox.hgrow="ALWAYS" />
+			<Label text="${controller.mode}" textFill="blue" />
+		</ToolBar>
+		<MenuBar>
+			<Menu text="%Islemler">
+				<MenuItem onAction="#close" text="%Close" disable="${controller.hideClose}" />
+				<MenuItem onAction="#refresh" text="%Refresh" disable="${controller.hideRefresh}" />
+				<MenuItem onAction="#add" text="%AddNew" disable="${controller.hideAdd}" />
+				<MenuItem onAction="#save" text="${controller.labelSave}" disable="${controller.hideSave}" />
+				<MenuItem onAction="#report" text="%Report" disable="${controller.hideReport}" />
+			</Menu>
+			<HBox.margin>
+				<Insets left="0.0" />
+			</HBox.margin>
+			<padding>
+				<Insets bottom="5.0" top="3.0" />
+			</padding>
+		</MenuBar>
+	</HBox>
+	<Label text="%FrmGroup.Header" GridPane.rowIndex="2">
+		<font>
+			<Font name="System Bold" size="18.0" />
+		</font>
+	</Label>
+	<TabPane id="tabGroup" prefWidth="700"
+		GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.vgrow="ALWAYS">
+		<Tab fx:id="tab1" closable="false" text="%FrmGroup.Tab1">
+			<HBox alignment="bottom_left" spacing="10">
+
+				<padding>
+					<Insets bottom="3" left="3" right="3" top="3" />
+				</padding>
+			</HBox>
+			<TableView fx:id="tGroups">
+				<columns>
+					<TableColumn minWidth="80" text="%FrmGroup.Id">
+						<cellValueFactory>
+							<PropertyValueFactory property="id" />
+						</cellValueFactory>
+					</TableColumn>
+					<TableColumn minWidth="80" text="%FrmAppAUL.Id">
+						<cellValueFactory>
+							<PropertyValueFactory property="appId" />
+						</cellValueFactory>
+					</TableColumn>
+					<TableColumn minWidth="350" text="%FrmGroup.Name">
+						<cellValueFactory>
+							<PropertyValueFactory property="name" />
+						</cellValueFactory>
+					</TableColumn>
+					<TableColumn minWidth="250" text="%FrmAppAUL.Name">
+						<cellValueFactory>
+							<PropertyValueFactory property="appName" />
+						</cellValueFactory>
+					</TableColumn>
+				</columns>
+			</TableView>
+
+		</Tab>
+		<Tab fx:id="tab2" closable="false" text="%FrmGroup.Tab2">
+			<SplitPane dividerPositions="0.29797979797979796"
+				GridPane.hgrow="ALWAYS" GridPane.rowIndex="3"
+				GridPane.vgrow="ALWAYS">
+				<items>
+					<AnchorPane minHeight="0.0" minWidth="0.0"
+						prefHeight="160.0" prefWidth="100.0">
+						<children>
+							<Label text="%FrmGroup.Header.AppFn" textFill="blue" 
+								AnchorPane.leftAnchor="0.0"
+								AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+							<TreeView fx:id="trAppSubitems"
+								AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+								AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0" onDragDetected="#dragFn" />
+						</children>
+					</AnchorPane>
+					<AnchorPane minHeight="0.0" minWidth="0.0"
+						prefHeight="160.0" prefWidth="100.0">
+						<children>
+							<Label text="%FrmGroup.Header.GroupFn" textFill="red" 
+								AnchorPane.leftAnchor="0.0"
+								AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+							<TreeView fx:id="trGroupSubitems" onDragOver="#acceptDragEvents" onDragDropped="#dropFn"
+								AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+								AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0" />
+						</children>
+					</AnchorPane>
+				</items>
+			</SplitPane>
+		</Tab>
+		<Tab fx:id="tab3" closable="false" text="%FrmGroup.Tab3">
+			<SplitPane dividerPositions="0.29797979797979796"
+				GridPane.hgrow="ALWAYS" GridPane.rowIndex="3"
+				GridPane.vgrow="ALWAYS">
+				<items>
+					<AnchorPane minHeight="0.0" minWidth="0.0"
+						prefHeight="160.0" prefWidth="100.0">
+						<children>
+						<HBox alignment="bottom_left" AnchorPane.leftAnchor="0.0"
+								AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">							
+							<TextField  fx:id="txtName" promptText="%Adsoyad" />
+							<Button defaultButton="true" onAction="#findUsers" text="%Listele" />
+							<padding>
+								<Insets bottom="3" left="3" right="3" top="3" />
+							</padding>
+						</HBox>
+						
+						<TableView  fx:id="tUsers" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+								AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0"
+							Style="-fx-border-width: 1;" onDragDetected="#dragUser">
+							<columns>
+								<TableColumn  id="c1" maxWidth="70" minWidth="70"
+									text="%Kayitnu">
+									<cellValueFactory>
+										<PropertyValueFactory  property="id" />
+									</cellValueFactory>
+								</TableColumn>
+								<TableColumn id="c3" text="%Adsoyad">
+									<cellValueFactory>
+										<PropertyValueFactory property="fullName" />
+									</cellValueFactory>
+								</TableColumn>
+								<TableColumn id="c2" text="%Eposta">
+									<cellValueFactory>
+										<PropertyValueFactory property="email" />
+									</cellValueFactory>
+								</TableColumn>
+								<TableColumn id="c4" text="%FrmKisiGDL.Unvan">
+									<cellValueFactory>
+										<PropertyValueFactory property="titleName" />
+									</cellValueFactory>
+								</TableColumn>
+								<TableColumn id="c5" text="%Ceptelnu">
+									<cellValueFactory>
+										<PropertyValueFactory property="mobileNu2" />
+									</cellValueFactory>
+								</TableColumn>
+							</columns>
+						</TableView>
+						</children>
+					</AnchorPane>
+					<AnchorPane minHeight="0.0" minWidth="0.0"
+						prefHeight="160.0" prefWidth="100.0">
+						<children>
+						<Label text="%FrmGroup.Header.GroupUsers" textFill="red" 
+								AnchorPane.leftAnchor="0.0"
+								AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="5.0" />
+						<TableView fx:id="tUsers2" onDragDropped="#dropUser" onDragOver="#acceptUserDragEvents"
+							Style="-fx-border-width: 1;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+								AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
+							<columns>
+								<TableColumn  id="c12" maxWidth="70" minWidth="70"
+									text="%Kayitnu">
+									<cellValueFactory>
+										<PropertyValueFactory  property="userId" />
+									</cellValueFactory>
+								</TableColumn>
+								<TableColumn id="c32" text="%Adsoyad">
+									<cellValueFactory>
+										<PropertyValueFactory property="userFullName" />
+									</cellValueFactory>
+								</TableColumn>
+								<TableColumn id="c42" text="%FrmKisiGDL.Unvan">
+									<cellValueFactory>
+										<PropertyValueFactory property="userTitleName" />
+									</cellValueFactory>
+								</TableColumn>
+								<TableColumn id="c22" text="%Eposta">
+									<cellValueFactory>
+										<PropertyValueFactory property="userEmail" />
+									</cellValueFactory>
+								</TableColumn>
+								<TableColumn id="c52" text="%Ceptelnu">
+									<cellValueFactory>
+										<PropertyValueFactory property="userPhoneNu2" />
+									</cellValueFactory>
+								</TableColumn>
+							</columns>
+						</TableView>
+						</children>
+					</AnchorPane>
+				</items>
+			</SplitPane>
+		</Tab>
+	</TabPane>
+</GridPane>

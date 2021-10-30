@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.ImageView?>
+
+<GridPane fx:id="self" xmlns="http://javafx.com/javafx/8.0.60"
+	xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="com.yp.core.fxview.admin.UsersAU">	
+	<HBox GridPane.rowIndex="1" xmlns:fx="http://javafx.com/fxml/1" prefWidth="700">
+		<ToolBar  HBox.hgrow="ALWAYS">
+			<Button onAction="#hide" text="%Close" disable="${controller.hideClose}" />
+			<Separator />
+			<Button onAction="#refresh" text="%Refresh" disable="${controller.hideRefresh}" />
+			<Separator />
+			<Button onAction="#add" text="%AddNew" disable="${controller.hideAdd}" />
+			<Separator />
+			<Button onAction="#save" text="${controller.labelSave}" disable="${controller.hideSave}" />
+			<Separator />
+			<Button onAction="#report" text="%Report" disable="${controller.hideReport}" />
+			<Separator />
+			<Pane HBox.hgrow="ALWAYS" />
+			<Label text="${controller.mode}" textFill="blue" />
+		</ToolBar>
+		<MenuBar>
+			<Menu text="%Islemler">
+				<MenuItem onAction="#close" text="%Close" disable="${controller.hideClose}" />
+				<MenuItem onAction="#refresh" text="%Refresh" disable="${controller.hideRefresh}" />
+				<MenuItem onAction="#add" text="%AddNew" disable="${controller.hideAdd}" />
+				<MenuItem onAction="#save" text="${controller.labelSave}" disable="${controller.hideSave}" />
+				<MenuItem onAction="#report" text="%Report" disable="${controller.hideReport}" />
+			</Menu>
+			<HBox.margin>
+				<Insets left="0.0" />
+			</HBox.margin>
+			<padding>
+				<Insets bottom="5.0" top="3.0" />
+			</padding>
+		</MenuBar>
+	</HBox>
+	<Label GridPane.rowIndex="2" text="%Users.Header">
+		<font>
+			<Font name="System Bold" size="18.0" />
+		</font>
+	</Label>	
+
+	<GridPane  hgap="5" vgap="5" GridPane.rowIndex="4">
+		
+		<Label 		GridPane.columnIndex="0" GridPane.rowIndex="2" GridPane.halignment="right" text="%FrmKisiGDL.Tcnu"  style="-fx-font-weight: bold;"/>
+		<Label 		GridPane.columnIndex="2" GridPane.rowIndex="2" text="%Ikinokta"/>
+		<TextField  GridPane.columnIndex="3" GridPane.rowIndex="2" fx:id="txtCitizenshipNu"  maxWidth="50"  />
+			
+		<Label 		GridPane.columnIndex="0" GridPane.rowIndex="3" GridPane.halignment="right" text="%Adi"  style="-fx-font-weight: bold;"/>
+		<Label 		GridPane.columnIndex="1" GridPane.rowIndex="3" text="*" style="-fx-font-weight: bold;-fx-text-fill: red;"/>
+		<Label 		GridPane.columnIndex="2" GridPane.rowIndex="3" text="%Ikinokta" />
+		<TextField  	GridPane.columnIndex="3" GridPane.rowIndex="3" fx:id="txtName" prefWidth="100" />
+		
+		<Label 		GridPane.columnIndex="0" GridPane.rowIndex="4" GridPane.halignment="right" text="%Soyadi"  style="-fx-font-weight: bold;"/>
+		<Label 		GridPane.columnIndex="1" GridPane.rowIndex="4" text="*" style="-fx-font-weight: bold;-fx-text-fill: red;"/>
+		<Label 		GridPane.columnIndex="2" GridPane.rowIndex="4" text="%Ikinokta" />
+		<TextField  GridPane.columnIndex="3" GridPane.rowIndex="4" fx:id="txtSurname" prefWidth="100" />
+		
+		<Label 		GridPane.columnIndex="0" GridPane.rowIndex="5" GridPane.halignment="right" text="%FrmKisiGDL.Dgmtarihi"  style="-fx-font-weight: bold;"/>
+		<Label 		GridPane.columnIndex="1" GridPane.rowIndex="5" text="*" style="-fx-font-weight: bold;-fx-text-fill: red;"/>
+		<Label 		GridPane.columnIndex="2" GridPane.rowIndex="5" text="%Ikinokta" />
+		<DatePicker GridPane.columnIndex="3" GridPane.rowIndex="5" fx:id="txtBirthdate" maxWidth="150" />
+		
+		<Label 		GridPane.columnIndex="0" GridPane.rowIndex="6" GridPane.halignment="right" text="%FrmKisiGDL.Unvan"  style="-fx-font-weight: bold;"/>
+		<Label 		GridPane.columnIndex="1" GridPane.rowIndex="6" text="*" style="-fx-font-weight: bold;-fx-text-fill: red;"/>
+		<Label 		GridPane.columnIndex="2" GridPane.rowIndex="6" text="%Ikinokta" />
+		<ComboBox   GridPane.columnIndex="3" GridPane.rowIndex="6" fx:id="cbTitle" maxWidth="200" promptText="%FrmKisiGDL.Secunvan"/>
+		
+		<Label 		GridPane.columnIndex="0" GridPane.rowIndex="7" GridPane.halignment="right" text="%FrmKisiGDL.Meslek"  style="-fx-font-weight: bold;"/>
+		<Label 		GridPane.columnIndex="1" GridPane.rowIndex="7" text="*" style="-fx-font-weight: bold;-fx-text-fill: red;"/>
+		<Label 		GridPane.columnIndex="2" GridPane.rowIndex="7" text="%Ikinokta" />
+		<ComboBox   GridPane.columnIndex="3" GridPane.rowIndex="7" fx:id="cbProfession" maxWidth="200" promptText="%FrmKisiGDL.Secmeslek"/>
+		
+		<Label 		GridPane.columnIndex="0" GridPane.rowIndex="8" GridPane.halignment="right" text="%FrmKisiGDL.Gorev"  style="-fx-font-weight: bold;"/>
+		<Label 		GridPane.columnIndex="1" GridPane.rowIndex="8" text="*" style="-fx-font-weight: bold;-fx-text-fill: red;"/>
+		<Label 		GridPane.columnIndex="2" GridPane.rowIndex="8" text="%Ikinokta" />
+		<ComboBox   GridPane.columnIndex="3" GridPane.rowIndex="8" fx:id="cbPosition" maxWidth="200" promptText="%FrmKisiGDL.Secgorev"/>
+		
+		<Label 		GridPane.columnIndex="0" GridPane.rowIndex="9" GridPane.halignment="right" text="%FrmUsersAU.Enroll.Date"  style="-fx-font-weight: bold;"/>
+		<Label 		GridPane.columnIndex="1" GridPane.rowIndex="9" text="*" style="-fx-font-weight: bold;-fx-text-fill: red;"/>
+		<Label 		GridPane.columnIndex="2" GridPane.rowIndex="9" text="%Ikinokta" />
+		<DatePicker GridPane.columnIndex="3" GridPane.rowIndex="9" fx:id="txtCheckinDate" maxWidth="150" />
+		
+		<CheckBox  	GridPane.columnIndex="3" GridPane.rowIndex="10" fx:id="onyDurumu" text="%FrmKisiGDL.Durumu"  style="-fx-text-fill: red; -fx-font-size: 16;" />
+		
+		<Label   	GridPane.columnIndex="0" GridPane.rowIndex="11" GridPane.halignment="right" text="%FrmUsersAU.Leave.Date"  style="-fx-font-weight: bold;"/>
+		<Label 		GridPane.columnIndex="1" GridPane.rowIndex="11" text="*" style="-fx-font-weight: bold;-fx-text-fill: red;"/>
+		<Label  	GridPane.columnIndex="2" GridPane.rowIndex="11" text="%Ikinokta" />
+		<DatePicker GridPane.columnIndex="3" GridPane.rowIndex="11" fx:id="txtCheckoutDate" maxWidth="150" />
+					
+		<ImageView  GridPane.columnIndex="7" GridPane.rowIndex="2"  GridPane.rowSpan="4" fx:id="pnlResim"   />
+					
+		<Label 		GridPane.columnIndex="4" GridPane.rowIndex="7" GridPane.halignment="RIGHT"  text="%Eposta"  style="-fx-font-weight: bold;"/>
+		<Label 		GridPane.columnIndex="6" GridPane.rowIndex="7" text="%Ikinokta" />
+		<TextField  GridPane.columnIndex="7" GridPane.rowIndex="7" fx:id="txtEmail" maxWidth="200" />
+		
+		<Label  	GridPane.columnIndex="4" GridPane.rowIndex="8" GridPane.halignment="RIGHT" text="%Evtelnu"  style="-fx-font-weight: bold;"/>
+		<Label  	GridPane.columnIndex="6" GridPane.rowIndex="8" text="%Ikinokta" />
+		<TextField  GridPane.columnIndex="7" GridPane.rowIndex="8" fx:id="txtHomeNu" maxWidth="200"  />
+		
+		<Label   	GridPane.columnIndex="4" GridPane.rowIndex="9" GridPane.halignment="right" text="%Ceptelnu"  style="-fx-font-weight: bold;"/>
+		<Label  	GridPane.columnIndex="6" GridPane.rowIndex="9" text="%Ikinokta" />
+		<TextField  GridPane.columnIndex="7" GridPane.rowIndex="9" fx:id="txtMobileNu" maxWidth="200"  />
+		
+		<Label   	GridPane.columnIndex="4" GridPane.rowIndex="10" GridPane.halignment="right" text="%FrmKisiGDL.Blnil"  style="-fx-font-weight: bold;"/>
+		<Label  	GridPane.columnIndex="6" GridPane.rowIndex="10" text="%Ikinokta" />
+		<ComboBox   GridPane.columnIndex="7" GridPane.rowIndex="10" fx:id="cbHomeCity" maxWidth="200" promptText="%FrmKisiGDL.Secblnil"/>
+		
+		<Label   	GridPane.columnIndex="4" GridPane.rowIndex="11" GridPane.halignment="right" text="%Adres"  style="-fx-font-weight: bold;"/>
+		<Label  	GridPane.columnIndex="6" GridPane.rowIndex="11" text="%Ikinokta" />
+		<TextArea   GridPane.columnIndex="7" GridPane.rowIndex="11" GridPane.rowSpan="3" fx:id="txtAddress" maxWidth="200" prefRowCount="4" />
+		
+		
+		
+		<Label 		GridPane.columnIndex="1" GridPane.rowIndex="14" GridPane.columnSpan="4" text="%Zorunlu" style="-fx-text-fill: red;" />
+		<Button 	GridPane.columnIndex="0" GridPane.rowIndex="15" GridPane.columnSpan="3" GridPane.halignment="right"  fx:id="btnSave" defaultButton="true" onAction="#save" text="%Save"  />
+		<Button 	GridPane.columnIndex="3" GridPane.rowIndex="15" onAction="#add" text="%AddNew" />
+		<Button 	GridPane.columnIndex="7" GridPane.rowIndex="15" GridPane.halignment="right"  fx:id="btnCancel" onAction="#close" text="%Close" />
+		
+	   	<padding>
+			<Insets bottom="5" left="5" right="2" top="2" />
+		</padding>				
+	</GridPane>
+</GridPane>

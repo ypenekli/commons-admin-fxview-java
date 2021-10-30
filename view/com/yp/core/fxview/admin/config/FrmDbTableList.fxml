@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+
+<GridPane fx:id="self" xmlns="http://javafx.com/javafx/8.0.60"
+	xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="com.yp.core.fxview.admin.config.DbTableList">
+
+	<TableView fx:id="tListe" editable="false"
+		style="-fx-border-width: 1;" GridPane.columnSpan="2"
+		GridPane.hgrow="ALWAYS" GridPane.rowIndex="0" GridPane.vgrow="ALWAYS">
+		<columns>
+			<TableColumn text="%Sirnu_kisa" prefWidth="40">
+				<cellValueFactory>
+					<PropertyValueFactory property="idx" />
+				</cellValueFactory>
+			</TableColumn>
+			<TableColumn text="%FrmAyar.etkSema" prefWidth="100">
+				<cellValueFactory>
+					<PropertyValueFactory property="sourceSchema" />
+				</cellValueFactory>
+			</TableColumn>
+			<TableColumn text="%Table" prefWidth="100">
+				<cellValueFactory>
+					<PropertyValueFactory property="sourceTable" />
+				</cellValueFactory>
+			</TableColumn>
+		</columns>
+	</TableView>
+
+	<Button onAction="#close" text="%EkleSecililer"
+		GridPane.columnIndex="0" GridPane.rowIndex="1" />
+	<Button onAction="#close" text="%Iptal" GridPane.columnIndex="1"
+		GridPane.halignment="right" GridPane.rowIndex="1" />
+</GridPane>

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+
+<GridPane fx:id="self" xmlns="http://javafx.com/javafx/8.0.60"
+	xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="com.yp.core.fxview.admin.UsersList">	
+	<HBox GridPane.rowIndex="1" xmlns:fx="http://javafx.com/fxml/1" prefWidth="700">
+		<ToolBar  HBox.hgrow="ALWAYS">
+			<Button onAction="#hide" text="%Close" disable="${controller.hideClose}" />
+			<Separator />
+			<Button onAction="#refresh" text="%Refresh" disable="${controller.hideRefresh}" />
+			<Separator />
+			<Button onAction="#add" text="%AddNew" disable="${controller.hideAdd}" />
+			<Separator />
+			<Button onAction="#save" text="${controller.labelSave}" disable="${controller.hideSave}" />
+			<Separator />
+			<Button onAction="#report" text="%Report" disable="${controller.hideReport}" />
+			<Separator />
+			<Pane HBox.hgrow="ALWAYS" />
+			<Label text="${controller.mode}" textFill="blue" />
+		</ToolBar>
+		<MenuBar>
+			<Menu text="%Islemler">
+				<MenuItem onAction="#close" text="%Close" disable="${controller.hideClose}" />
+				<MenuItem onAction="#refresh" text="%Refresh" disable="${controller.hideRefresh}" />
+				<MenuItem onAction="#add" text="%AddNew" disable="${controller.hideAdd}" />
+				<MenuItem onAction="#save" text="${controller.labelSave}" disable="${controller.hideSave}" />
+				<MenuItem onAction="#report" text="%Report" disable="${controller.hideReport}" />
+			</Menu>
+			<HBox.margin>
+				<Insets left="0.0" />
+			</HBox.margin>
+			<padding>
+				<Insets bottom="5.0" top="3.0" />
+			</padding>
+		</MenuBar>
+	</HBox>
+	<Label GridPane.rowIndex="2" text="%Users.Header">
+		<font>
+			<Font name="System Bold" size="18.0" />
+		</font>
+	</Label>
+
+	<HBox GridPane.rowIndex="3" spacing="10" alignment="bottom_left">
+		<Label style="-fx-font-weight: bold;" text="%Adsoyad" />
+		<TextField  fx:id="txtName" promptText="%Adsoyad" />
+		<Button defaultButton="true" onAction="#find" text="%Listele" />
+		<padding>
+			<Insets bottom="3" left="3" right="3" top="3" />
+		</padding>
+	</HBox>
+
+	<TableView  GridPane.rowIndex="4" GridPane.columnIndex="0"
+		 GridPane.columnSpan="5" fx:id="tUsers"
+		Style="-fx-border-width: 1;" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+		<columns>
+			<TableColumn  id="c1" maxWidth="70" minWidth="70"
+				text="%Kayitnu">
+				<cellValueFactory>
+					<PropertyValueFactory  property="id" />
+				</cellValueFactory>
+			</TableColumn>
+			<TableColumn  text="%Adsoyad">
+				<cellValueFactory>
+					<PropertyValueFactory property="fullName" />
+				</cellValueFactory>
+			</TableColumn>
+			<TableColumn  text="%Eposta">
+				<cellValueFactory>
+					<PropertyValueFactory property="email" />
+				</cellValueFactory>
+			</TableColumn>
+			<TableColumn  text="%FrmKisiGDL.Blnil" >
+				<cellValueFactory>
+					<PropertyValueFactory property="homeCityName" />
+				</cellValueFactory>
+			</TableColumn>
+			<TableColumn text="%FrmKisiGDL.Gorevi">
+				<cellValueFactory>
+					<PropertyValueFactory property="positionName" />
+				</cellValueFactory>
+			</TableColumn>
+			<TableColumn  text="%Ceptelnu" >
+				<cellValueFactory>
+					<PropertyValueFactory property="mobilePhoneNu" />
+				</cellValueFactory>
+			</TableColumn>
+		</columns>
+	</TableView>
+
+</GridPane>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.geometry.Insets?>
+
+<GridPane xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" 
+	fx:controller="com.yp.core.fxview.admin.GroupAU" hgap="5" vgap="5" fx:id="self"  >	
+	<HBox GridPane.rowIndex="1" xmlns:fx="http://javafx.com/fxml/1" prefWidth="700">
+		<ToolBar  HBox.hgrow="ALWAYS">
+			<Button onAction="#hide" text="%Close" disable="${controller.hideClose}" />
+			<Separator />
+			<Button onAction="#refresh" text="%Refresh" disable="${controller.hideRefresh}" />
+			<Separator />
+			<Button onAction="#add" text="%AddNew" disable="${controller.hideAdd}" />
+			<Separator />
+			<Button onAction="#save" text="${controller.labelSave}" disable="${controller.hideSave}" />
+			<Separator />
+			<Button onAction="#report" text="%Report" disable="${controller.hideReport}" />
+			<Separator />
+			<Pane HBox.hgrow="ALWAYS" />
+			<Label text="${controller.mode}" textFill="blue" />
+		</ToolBar>
+		<MenuBar>
+			<Menu text="%Islemler">
+				<MenuItem onAction="#close" text="%Close" disable="${controller.hideClose}" />
+				<MenuItem onAction="#refresh" text="%Refresh" disable="${controller.hideRefresh}" />
+				<MenuItem onAction="#add" text="%AddNew" disable="${controller.hideAdd}" />
+				<MenuItem onAction="#save" text="${controller.labelSave}" disable="${controller.hideSave}" />
+				<MenuItem onAction="#report" text="%Report" disable="${controller.hideReport}" />
+			</Menu>
+			<HBox.margin>
+				<Insets left="0.0" />
+			</HBox.margin>
+			<padding>
+				<Insets bottom="5.0" top="3.0" />
+			</padding>
+		</MenuBar>
+	</HBox>
+	<Label GridPane.rowIndex="2" text="%FrmGroup.Header">
+		<font>
+			<Font name="System Bold" size="18.0" />
+		</font>
+	</Label>	
+
+	<GridPane  hgap="5" vgap="5" GridPane.rowIndex="4">
+	
+      	<Label 		GridPane.columnIndex="0" GridPane.rowIndex="1" GridPane.halignment="right"  text="%FrmGroup.Id" style="-fx-font-weight: bold;"/>
+		<Label 		GridPane.columnIndex="2" GridPane.rowIndex="1" text="%Ikinokta"/>
+		<Label  	GridPane.columnIndex="3" GridPane.rowIndex="1" fx:id="txtGroupId" />
+			
+		<Label 		GridPane.columnIndex="0" GridPane.rowIndex="2" GridPane.halignment="right" text="%FrmAppAUL.Name" style="-fx-font-weight: bold;"/>
+		<Label 		GridPane.columnIndex="1" GridPane.rowIndex="2" text="*" style="-fx-font-weight: bold;-fx-text-fill: red;"/>
+		<Label 		GridPane.columnIndex="2" GridPane.rowIndex="2" text="%Ikinokta" />
+		<ComboBox	GridPane.columnIndex="3" GridPane.rowIndex="2" fx:id="chApps" maxWidth="300"  promptText="%FrmAppAUL.Selectapp" />
+		
+		<Label 		GridPane.columnIndex="0" GridPane.rowIndex="3" GridPane.halignment="right" text="%FrmGroup.Name" style="-fx-font-weight: bold;"/>
+		<Label 		GridPane.columnIndex="1" GridPane.rowIndex="3" text="*" style="-fx-font-weight: bold;-fx-text-fill: red;"/>
+		<Label 		GridPane.columnIndex="2" GridPane.rowIndex="3" text="%Ikinokta" />
+		<TextField  GridPane.columnIndex="3" GridPane.rowIndex="3" fx:id="txtGroupName" prefWidth="350" />
+		
+		<Label 		GridPane.columnIndex="0" GridPane.rowIndex="4" GridPane.columnSpan="4" text="%Zorunlu" style="-fx-text-fill: red;" />
+		<Label 		GridPane.columnIndex="0" GridPane.rowIndex="5" GridPane.columnSpan="4" style="-fx-text-fill: blue;" />			
+		<Button 	GridPane.columnIndex="0" GridPane.rowIndex="6"  GridPane.halignment="right"  GridPane.columnSpan="2" defaultButton="true" onAction="#save" text="%Save"  />		
+		
+		<Button 	GridPane.columnIndex="2" GridPane.rowIndex="6"  GridPane.halignment="right" GridPane.columnSpan="2" onAction="#close" text="%Close" />
+		
+	   	<padding>
+			<Insets bottom="5" left="5" right="2" top="2" />
+		</padding>				
+	</GridPane>
+</GridPane>

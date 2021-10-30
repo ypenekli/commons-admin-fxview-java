@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Separator?>
+
+<HBox xmlns:fx="http://javafx.com/fxml/1" prefWidth="700" 
+	fx:controller="com.yp.core.fxview.ToolBar" >
+	<ToolBar  HBox.hgrow="ALWAYS">
+			<Button onAction="#hide" text="%Close" disable="${controller.hideClose}" fx:id="btnHide"/>
+			<Separator />
+			<Button onAction="#refresh" text="%Refresh" disable="${controller.hideRefresh}" />
+			<Separator />
+			<Button onAction="#add" text="%AddNew" disable="${controller.hideAdd}" />
+			<Separator />
+			<Button onAction="#save" text="${controller.labelSave}" disable="${controller.hideSave}" />
+			<Separator />
+			<Button onAction="#report" text="%Report" disable="${controller.hideReport}" />
+			<Separator />
+			<Pane HBox.hgrow="ALWAYS" />
+			<Label text="${controller.mode}" textFill="blue" />
+		</ToolBar>
+		<MenuBar>
+			<Menu text="%Islemler">
+				<MenuItem onAction="#close" text="%Close" disable="${controller.hideClose}" />
+				<MenuItem onAction="#refresh" text="%Refresh" disable="${controller.hideRefresh}" />
+				<MenuItem onAction="#add" text="%AddNew" disable="${controller.hideAdd}" />
+				<MenuItem onAction="#save" text="${controller.labelSave}" disable="${controller.hideSave}" />
+				<MenuItem onAction="#report" text="%Report" disable="${controller.hideReport}" />
+			</Menu>
+			<HBox.margin>
+				<Insets left="0.0" />
+			</HBox.margin>
+			<padding>
+				<Insets bottom="5.0" top="3.0" />
+			</padding>
+		</MenuBar>
+</HBox>
+

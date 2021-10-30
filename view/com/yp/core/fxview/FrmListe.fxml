@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.web.WebView?>
+
+<GridPane hgap="5" vgap="5" xmlns="http://javafx.com/javafx/8.0.60"
+	xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.yp.core.fxview.Liste">
+
+	<HBox GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+		<WebView fx:id="web"  HBox.hgrow="ALWAYS"/>
+	</HBox>
+
+</GridPane>
