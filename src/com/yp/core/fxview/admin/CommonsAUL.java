@@ -8,7 +8,9 @@ import java.util.ResourceBundle;
 
 import com.yp.admin.data.Common;
 import com.yp.core.BaseConstants;
+import com.yp.core.db.Pager;
 import com.yp.core.entity.IDataEntity;
+import com.yp.core.entity.IResult;
 
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -47,13 +49,14 @@ public class CommonsAUL extends RootPage {
 	@FXML
 	private Button btnParent;
 
+	private Pager pager ;
 	private Common selectedRoot;
 	private List<Common> rootSubitems;
 	private List<Common> subitems1;
 	private List<Common> subitems2;
 	private Deque<IDataEntity> refNode;
 
-	public void initialize(final URL location, final ResourceBundle resources) {
+	public void initialize(final URL location, final ResourceBundle resources) {		
 		refNode = new LinkedList<>();
 		selectedRoot = new Common(0);
 		readRoots();
@@ -65,8 +68,13 @@ public class CommonsAUL extends RootPage {
 		return null;
 	}
 
+	
 	private void readRoots() {
-		rootSubitems = getCommonModel().findByParent(0);
+		pager = new Pager(0, 50, -1);
+		IResult<List<Common>> res = getCommonModel().findByParent(0, pager);
+		rootSubitems = res.getData();
+		pager.setLength(res.getDataLength());
+		
 		cmbRoot.setItems(FXCollections.observableArrayList(rootSubitems));
 		if (selectedRoot != null) {
 			cmbRoot.getSelectionModel().select(selectedRoot);
@@ -82,7 +90,11 @@ public class CommonsAUL extends RootPage {
 				txtShortname.setText(de.getAbrv());
 				txtDef.setText(de.getDescription());
 				if (!de.isLeaf()) {
-					subitems2 = getCommonModel().findByParent(de.getId());
+					pager = new Pager(0, 50, -1);
+					IResult<List<Common>> res = getCommonModel().findByParent(de.getId(), pager);
+					System.out.println("count select items :" + res.getDataLength());
+					pager.setLength(res.getDataLength());
+					subitems2 = res.getData();
 					refresh(tSubitems2, subitems2, (IDataEntity) null);
 				}
 				checkFormItems(de.isLeaf());
@@ -220,7 +232,11 @@ public class CommonsAUL extends RootPage {
 	public void selectRoot(final ActionEvent arg0) {
 		selectedRoot = cmbRoot.getValue();
 		if (selectedRoot != null) {
-			subitems1 = getCommonModel().findByParent(selectedRoot.getId());
+			pager = new Pager(0, 50, -1);
+			IResult<List<Common>> res = getCommonModel().findByParent(selectedRoot.getId(), pager);
+			System.out.println("count select root :" + res.getDataLength());
+			pager.setLength(res.getDataLength());
+			subitems1 = res.getData();
 			refresh(tSubitems1, subitems1, (IDataEntity) null);
 		}
 	}

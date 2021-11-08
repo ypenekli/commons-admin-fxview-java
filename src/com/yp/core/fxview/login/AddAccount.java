@@ -8,6 +8,7 @@ import com.yp.admin.data.Common;
 import com.yp.admin.data.User;
 import com.yp.admin.model.CommonModel;
 import com.yp.core.BaseConstants;
+import com.yp.core.entity.IResult;
 import com.yp.core.fxview.AForm;
 import com.yp.core.ref.IReference;
 import com.yp.core.tools.StringTool;
@@ -61,9 +62,10 @@ public class AddAccount extends AForm {
 	public void initialize(URL pLocation, ResourceBundle pResources) {
 
 		pages = new Tab[] { page1, page2, page3, page4 };
-		List<Common> dIlListe = new CommonModel().findByParent(Common.PARENT_ID_CITY_TR);
-		if (dIlListe != null)
-			cbHomeCity.setItems(FXCollections.observableArrayList(dIlListe));
+		IResult<List<Common>> res = new CommonModel().findByParent(Common.PARENT_ID_CITY_TR, null);
+		List<Common> list = res.getData();
+		if (list != null)
+			cbHomeCity.setItems(FXCollections.observableArrayList(list));
 		page.getSelectionModel().clearAndSelect(dIndeks);
 
 		String email = BaseConstants.getConfig(USER_NAME);

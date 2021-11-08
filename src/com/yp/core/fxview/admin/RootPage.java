@@ -10,6 +10,7 @@ import com.yp.admin.model.CommonModel;
 import com.yp.admin.model.AppFuncModel;
 import com.yp.admin.model.AppModel;
 import com.yp.admin.model.ExportModel;
+import com.yp.core.entity.IResult;
 import com.yp.core.fxview.AForm;
 
 import javafx.concurrent.Task;
@@ -66,7 +67,8 @@ public abstract class RootPage extends AForm {
 
 	public List<Common> getCityList() {
 		if (cityList == null) {
-			cityList = getCommonModel().findByParent(Common.PARENT_ID_CITY_TR);
+			IResult<List<Common>> res = getCommonModel().findByParent(Common.PARENT_ID_CITY_TR, null);
+			cityList = res.getData();
 		}
 		return cityList;
 	}

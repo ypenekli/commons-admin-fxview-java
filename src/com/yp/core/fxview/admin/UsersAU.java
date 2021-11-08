@@ -8,6 +8,7 @@ import java.util.ResourceBundle;
 import com.yp.admin.data.Common;
 import com.yp.admin.data.User;
 import com.yp.core.BaseConstants;
+import com.yp.core.entity.IResult;
 import com.yp.core.tools.DateTime;
 import com.yp.core.tools.StringTool;
 import com.yp.core.user.IUser;
@@ -62,10 +63,14 @@ public class UsersAU extends RootPage {
 	protected List<Common> professionList;
 
 	public void fillRefrences() {
-		cityList = getCommonModel().findByParent(Common.PARENT_ID_CITY_TR);
-		positionList = getCommonModel().findByParent(Common.PARENT_ID_POSITION);
-		titleList = getCommonModel().findByParent(Common.PARENT_ID_TITLE);
-		professionList = getCommonModel().findByParent(Common.PARENT_ID_PROFESSION);
+		IResult<List<Common>> res = getCommonModel().findByParent(Common.PARENT_ID_CITY_TR, null);
+		cityList = res.getData();
+		res = getCommonModel().findByParent(Common.PARENT_ID_POSITION, null);
+		positionList = res.getData();		
+		res = getCommonModel().findByParent(Common.PARENT_ID_TITLE, null);
+		titleList = res.getData();;
+		res = getCommonModel().findByParent(Common.PARENT_ID_PROFESSION, null);
+		professionList = res.getData();;
 	}
 
 	public void initialize(URL location, ResourceBundle resources) {
