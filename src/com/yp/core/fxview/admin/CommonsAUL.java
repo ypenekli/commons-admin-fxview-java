@@ -49,7 +49,7 @@ public class CommonsAUL extends RootPage {
 	@FXML
 	private Button btnParent;
 
-	private Pager pager ;
+	private Pager pager = new Pager();
 	private Common selectedRoot;
 	private List<Common> rootSubitems;
 	private List<Common> subitems1;
@@ -70,7 +70,7 @@ public class CommonsAUL extends RootPage {
 
 	
 	private void readRoots() {
-		pager = new Pager(0, 50, -1);
+		pager.reset(50);
 		IResult<List<Common>> res = getCommonModel().findByParent(0, pager);
 		rootSubitems = res.getData();
 		pager.setLength(res.getDataLength());
@@ -90,7 +90,7 @@ public class CommonsAUL extends RootPage {
 				txtShortname.setText(de.getAbrv());
 				txtDef.setText(de.getDescription());
 				if (!de.isLeaf()) {
-					pager = new Pager(0, 50, -1);
+					pager.reset(50);
 					IResult<List<Common>> res = getCommonModel().findByParent(de.getId(), pager);
 					System.out.println("count select items :" + res.getDataLength());
 					pager.setLength(res.getDataLength());
@@ -232,7 +232,7 @@ public class CommonsAUL extends RootPage {
 	public void selectRoot(final ActionEvent arg0) {
 		selectedRoot = cmbRoot.getValue();
 		if (selectedRoot != null) {
-			pager = new Pager(0, 50, -1);
+			pager.reset(50);
 			IResult<List<Common>> res = getCommonModel().findByParent(selectedRoot.getId(), pager);
 			System.out.println("count select root :" + res.getDataLength());
 			pager.setLength(res.getDataLength());
